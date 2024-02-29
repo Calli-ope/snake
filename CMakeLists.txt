@@ -10,8 +10,13 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(Snake src/main.cpp)
-target_link_libraries(Snake PRIVATE sfml-graphics)
+add_executable(Snake src/main.cpp
+        src/headers/State.h
+        src/headers/StateController.h
+        src/StateController.cpp
+        src/AssetManager.cpp
+        src/headers/AssetManager.h)
+target_link_libraries(Snake PRIVATE sfml-graphics; sfml-window; sfml-system)
 target_compile_features(Snake PRIVATE cxx_std_17)
 
 if(WIN32)
