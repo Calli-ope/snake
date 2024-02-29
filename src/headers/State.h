@@ -7,7 +7,7 @@ namespace Engine
     class State
     {
     public:
-        State();
+        State(){};
         virtual ~State(){};
 
         virtual void Init() = 0;

@@ -1,21 +1,9 @@
-#include <SFML/Graphics.hpp>
+#include "headers/Game.h"
 
 int main()
 {
-    auto window = sf::RenderWindow{ { 1920u, 1080u }, "Snake" };
-    window.setFramerateLimit(144);
+    Game game;
+    game.Run();
 
-    while (window.isOpen())
-    {
-        for (auto event = sf::Event{}; window.pollEvent(event);)
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-
-        window.clear();
-        window.display();
-    }
+    return 0;
 }

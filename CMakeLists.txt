@@ -15,7 +15,12 @@ add_executable(Snake src/main.cpp
         src/headers/StateController.h
         src/StateController.cpp
         src/AssetManager.cpp
-        src/headers/AssetManager.h)
+        src/headers/AssetManager.h
+        src/Game.cpp
+        src/headers/Game.h
+        src/MainMenu.cpp
+        src/headers/MainMenu.h)
+file(COPY src/assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 target_link_libraries(Snake PRIVATE sfml-graphics; sfml-window; sfml-system)
 target_compile_features(Snake PRIVATE cxx_std_17)
 

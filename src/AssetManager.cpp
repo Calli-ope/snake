@@ -22,7 +22,7 @@ void Engine::AssetManager::AddFont(int id, const std::string& filePath)
 {
     auto font = std::make_unique<sf::Font>();
 
-    if (!font->loadFromFile(filePath))
+    if (font->loadFromFile(filePath))
     {
         m_fonts[id] = std::move(font);
     }
