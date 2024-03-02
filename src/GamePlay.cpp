@@ -1,4 +1,5 @@
 #include "headers/GamePlay.h"
+#include "headers/GameOver.h"
 #include <SFML/Window/Event.hpp>
 
 #include <stdlib.h>
@@ -101,7 +102,7 @@ void GamePlay::Update(sf::Time deltaTime)
         {
             if (m_snake.isOn(border))
             {
-                borderCollision = true;
+                m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
                 break;
             }
         }

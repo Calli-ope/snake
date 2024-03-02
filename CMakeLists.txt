@@ -23,7 +23,9 @@ add_executable(Snake src/main.cpp
         src/GamePlay.cpp
         src/headers/GamePlay.h
         src/Snake.cpp
-        src/headers/Snake.h)
+        src/headers/Snake.h
+        src/GameOver.cpp
+        src/headers/GameOver.h)
 file(COPY src/assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 target_link_libraries(Snake PRIVATE sfml-graphics; sfml-window; sfml-system)
 target_compile_features(Snake PRIVATE cxx_std_17)

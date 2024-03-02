@@ -6,22 +6,22 @@
 #include "State.h"
 #include "Game.h"
 
-class MainMenu : public Engine::State
+class GameOver : public Engine::State
 {
 private:
     std::shared_ptr<Context> m_context;
-    sf::Text m_gameTitle;
-    sf::Text m_play;
+    sf::Text m_gameOver;
+    sf::Text m_retry;
     sf::Text m_exit;
 
-    bool m_playSelected;
-    bool m_playPressed;
+    bool m_retrySelected;
+    bool m_retryPressed;
     bool m_exitSelected;
     bool m_exitPressed;
 
 public:
-    MainMenu(std::shared_ptr<Context>& context);
-    ~MainMenu();
+    GameOver(std::shared_ptr<Context>& context);
+    ~GameOver();
 
     void Init() override;
     void ProcessInput() override;
