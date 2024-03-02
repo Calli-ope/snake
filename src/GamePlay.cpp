@@ -12,6 +12,9 @@ GamePlay::~GamePlay()
 void GamePlay::Init()
 {
     m_context->m_assets->AddTexture(Background, "assets/background.png", true);
+    m_context->m_assets->AddTexture(Border, "assets/border.png", true);
+    m_context->m_assets->AddTexture(Food, "assets/food.png");
+    m_context->m_assets->AddTexture(Snake, "assets/snake.png");
 
     m_background.setTexture(m_context->m_assets->GetTexture(Background));
     m_background.setTextureRect(m_context->m_window->getViewport(m_context->m_window->getDefaultView()));
