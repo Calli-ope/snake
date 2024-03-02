@@ -18,8 +18,6 @@ GameOver::~GameOver()
 
 void GameOver::Init()
 {
-    m_context->m_assets->AddFont(FONT, "assets/Baloo2.ttf");
-
     //game title
     m_gameOver.setFont(m_context->m_assets->GetFont(FONT));
     m_gameOver.setString("Game Over");

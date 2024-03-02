@@ -46,6 +46,25 @@ void Snake::Grow(const sf::Vector2f &direction)
     m_head = m_snake.insert(m_head++, newSegment);
 }
 
+bool Snake::isColliding() const
+{
+    bool isColliding = false;
+
+    for (auto segment = m_snake.begin(); segment != m_snake.end(); segment++)
+    {
+        if (m_head != segment)
+        {
+            isColliding = isOn(*segment);
+            if (isColliding)
+            {
+                break;
+            }
+        }
+    }
+    return isColliding;
+}
+
+
 void Snake::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     for (auto &segment : m_snake)

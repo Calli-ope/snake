@@ -133,6 +133,11 @@ void GamePlay::Update(sf::Time deltaTime)
             m_snake.Move(m_direction);
         }
 
+        if (m_snake.isColliding())
+        {
+            m_context->m_states->Add(std::make_unique<GameOver>(m_context), true);
+        }
+
         m_elapsedTime = sf::Time::Zero;
     }
 }
