@@ -1,11 +1,15 @@
 #include "headers/GamePlay.h"
 #include <SFML/Window/Event.hpp>
 
+#include <stdlib.h>
+#include <time.h>
+
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
     : m_context(context),
         m_direction({16.f, 0.f}),
         m_elapsedTime(sf::Time::Zero)
 {
+    srand(time(nullptr));
 }
 
 GamePlay::~GamePlay()
@@ -56,23 +60,30 @@ void GamePlay::ProcessInput()
         }
         else if (event.type == sf::Event::KeyPressed)
         {
+            sf::Vector2f newDirection = m_direction;
             switch (event.key.code)
             {
             case sf::Keyboard::Up:
-                m_direction = {0.f, -16.f};
+                newDirection = {0.f, -16.f};
                 break;
             case sf::Keyboard::Down:
-                m_direction = {0.f, 16.f};
+                newDirection = {0.f, 16.f};
                 break;
             case sf::Keyboard::Left:
-                m_direction = {-16.f, 0.f};
+                newDirection = {-16.f, 0.f};
                 break;
             case sf::Keyboard::Right:
-                m_direction = {16.f, 0.f};
+                newDirection = {16.f, 0.f};
                 break;
 
             default:
                 break;
+            }
+
+            if (std::abs(m_direction.x) != std::abs(newDirection.x) ||
+                std::abs(m_direction.y) != std::abs(newDirection.y))
+            {
+                m_direction = newDirection;
             }
         }
     }
@@ -84,9 +95,27 @@ void GamePlay::Update(sf::Time deltaTime)
 
     if (m_elapsedTime.asSeconds() > 0.1)
     {
+        bool borderCollision = false;
+
+        for (auto &border : m_border)
+        {
+            if (m_snake.isOn(border))
+            {
+                borderCollision = true;
+                break;
+            }
+        }
+
         if (m_snake.isOn(m_food))
         {
             m_snake.Grow(m_direction);
+
+            int x = 0;
+            int y = 0;
+            x = std::clamp<int>(rand() % (m_context->m_window->getSize().x), 16, m_context->m_window->getSize().x - 2*16);
+            y = std::clamp<int>(rand() % (m_context->m_window->getSize().y), 16, m_context->m_window->getSize().y - 2*16);
+
+            m_food.setPosition(x, y);
         }
         else
         {
