@@ -1,4 +1,5 @@
 #include "headers/MainMenu.h"
+#include "headers/GamePlay.h"
 #include <SFML/Window/Event.hpp>
 
 MainMenu::MainMenu(std::shared_ptr<Context> &context)
@@ -108,7 +109,7 @@ void MainMenu::Update(sf::Time deltaTime)
 
     if (m_playPressed)
     {
-
+        m_context->m_states->Add(std::make_unique<GamePlay>(m_context), true);
     }
     else if (m_exitPressed)
     {
