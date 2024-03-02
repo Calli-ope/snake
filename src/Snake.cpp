@@ -35,11 +35,15 @@ void Snake::Move(const sf::Vector2f &direction)
 
 bool Snake::isOn(const sf::Sprite &other) const
 {
+    return other.getGlobalBounds().intersects(m_head->getGlobalBounds());
 }
 
 void Snake::Grow(const sf::Vector2f &direction)
 {
-
+    sf::Sprite newSegment;
+    newSegment.setTexture(*(m_snake.begin()->getTexture()));
+    newSegment.setPosition(m_head->getPosition() + direction);
+    m_head = m_snake.insert(m_head++, newSegment);
 }
 
 void Snake::draw(sf::RenderTarget &target, sf::RenderStates states) const

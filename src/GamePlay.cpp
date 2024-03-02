@@ -84,7 +84,15 @@ void GamePlay::Update(sf::Time deltaTime)
 
     if (m_elapsedTime.asSeconds() > 0.1)
     {
-        m_snake.Move(m_direction);
+        if (m_snake.isOn(m_food))
+        {
+            m_snake.Grow(m_direction);
+        }
+        else
+        {
+            m_snake.Move(m_direction);
+        }
+
         m_elapsedTime = sf::Time::Zero;
     }
 }
