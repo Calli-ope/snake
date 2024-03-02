@@ -23,21 +23,20 @@ void MainMenu::Init()
     m_gameTitle.setFont(m_context->m_assets->GetFont(FONT));
     m_gameTitle.setString("Snake");
     m_gameTitle.setOrigin(m_gameTitle.getLocalBounds().width / 2, m_gameTitle.getLocalBounds().height / 2);
-    m_gameTitle.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 150.f);
+    m_gameTitle.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 250.f);
+    m_gameTitle.setCharacterSize(50);
 
     //play
     m_play.setFont(m_context->m_assets->GetFont(FONT));
     m_play.setString("Play");
     m_play.setOrigin(m_play.getLocalBounds().width / 2, m_play.getLocalBounds().height / 2);
-    m_play.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 25.f);
-    m_play.setCharacterSize(20);
+    m_play.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 40.f);
 
     //exit
     m_exit.setFont(m_context->m_assets->GetFont(FONT));
     m_exit.setString("Exit");
     m_exit.setOrigin(m_exit.getLocalBounds().width / 2, m_exit.getLocalBounds().height / 2);
-    m_exit.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 25.f);
-    m_exit.setCharacterSize(20);
+    m_exit.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 40.f);
 }
 
 void MainMenu::ProcessInput()

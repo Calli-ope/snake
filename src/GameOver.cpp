@@ -24,21 +24,20 @@ void GameOver::Init()
     m_gameOver.setFont(m_context->m_assets->GetFont(FONT));
     m_gameOver.setString("Game Over");
     m_gameOver.setOrigin(m_gameOver.getLocalBounds().width / 2, m_gameOver.getLocalBounds().height / 2);
-    m_gameOver.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 150.f);
+    m_gameOver.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 250.f);
+    m_gameOver.setCharacterSize(50);
 
     //play
     m_retry.setFont(m_context->m_assets->GetFont(FONT));
     m_retry.setString("Retry");
     m_retry.setOrigin(m_retry.getLocalBounds().width / 2, m_retry.getLocalBounds().height / 2);
-    m_retry.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 25.f);
-    m_retry.setCharacterSize(20);
+    m_retry.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 40.f);
 
     //exit
     m_exit.setFont(m_context->m_assets->GetFont(FONT));
     m_exit.setString("Exit");
     m_exit.setOrigin(m_exit.getLocalBounds().width / 2, m_exit.getLocalBounds().height / 2);
-    m_exit.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 25.f);
-    m_exit.setCharacterSize(20);
+    m_exit.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 40.f);
 }
 
 void GameOver::ProcessInput()

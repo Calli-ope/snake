@@ -12,12 +12,12 @@ Snake::~Snake()
 
 void Snake::Init(const sf::Texture &texture)
 {
-    float x = 16.f;
+    float x = 24.f;
     for (auto &segment : m_snake)
     {
         segment.setTexture(texture);
-        segment.setPosition(x, 16.f);
-        x += 16.f;
+        segment.setPosition(x, 24.f);
+        x += 24.f;
     }
 }
 

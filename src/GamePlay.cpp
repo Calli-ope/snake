@@ -7,7 +7,7 @@
 
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
     : m_context(context),
-        m_direction({16.f, 0.f}),
+        m_direction({24.f, 0.f}),
         m_elapsedTime(sf::Time::Zero)
 {
     srand(time(nullptr));
@@ -34,13 +34,13 @@ void GamePlay::Init()
         border.setTexture(m_context->m_assets->GetTexture(BORDER));
     }
 
-    m_border[0].setTextureRect({0, 0, m_context->m_window->getSize().x, 16});
-    m_border[1].setTextureRect({0, 0, m_context->m_window->getSize().x, 16});
-    m_border[1].setPosition(0, m_context->m_window->getSize().y - 16);
+    m_border[0].setTextureRect({0, 0, m_context->m_window->getSize().x, 24});
+    m_border[1].setTextureRect({0, 0, m_context->m_window->getSize().x, 24});
+    m_border[1].setPosition(0, m_context->m_window->getSize().y - 24);
 
-    m_border[2].setTextureRect({0, 0, 16, m_context->m_window->getSize().y});
-    m_border[3].setTextureRect({0, 0, 16, m_context->m_window->getSize().y});
-    m_border[3].setPosition(m_context->m_window->getSize().x - 16, 0);
+    m_border[2].setTextureRect({0, 0, 24, m_context->m_window->getSize().y});
+    m_border[3].setTextureRect({0, 0, 24, m_context->m_window->getSize().y});
+    m_border[3].setPosition(m_context->m_window->getSize().x - 24, 0);
 
     //display food
     m_food.setTexture(m_context->m_assets->GetTexture(FOOD));
@@ -65,16 +65,16 @@ void GamePlay::ProcessInput()
             switch (event.key.code)
             {
             case sf::Keyboard::Up:
-                newDirection = {0.f, -16.f};
+                newDirection = {0.f, -24.f};
                 break;
             case sf::Keyboard::Down:
-                newDirection = {0.f, 16.f};
+                newDirection = {0.f, 24.f};
                 break;
             case sf::Keyboard::Left:
-                newDirection = {-16.f, 0.f};
+                newDirection = {-24.f, 0.f};
                 break;
             case sf::Keyboard::Right:
-                newDirection = {16.f, 0.f};
+                newDirection = {24.f, 0.f};
                 break;
 
             default:
@@ -113,8 +113,8 @@ void GamePlay::Update(sf::Time deltaTime)
 
             int x = 0;
             int y = 0;
-            x = std::clamp<int>(rand() % (m_context->m_window->getSize().x), 16, m_context->m_window->getSize().x - 2*16);
-            y = std::clamp<int>(rand() % (m_context->m_window->getSize().y), 16, m_context->m_window->getSize().y - 2*16);
+            x = std::clamp<int>(rand() % (m_context->m_window->getSize().x), 24, m_context->m_window->getSize().x - 2*24);
+            y = std::clamp<int>(rand() % (m_context->m_window->getSize().y), 24, m_context->m_window->getSize().y - 2*24);
 
             m_food.setPosition(x, y);
         }
