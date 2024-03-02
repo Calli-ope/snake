@@ -8,7 +8,8 @@
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
     : m_context(context),
         m_direction({24.f, 0.f}),
-        m_elapsedTime(sf::Time::Zero)
+        m_elapsedTime(sf::Time::Zero),
+        m_score(0)
 {
     srand(time(nullptr));
 }
@@ -48,6 +49,14 @@ void GamePlay::Init()
 
     //display snake
     m_snake.Init(m_context->m_assets->GetTexture(SNAKE));
+
+    //display score
+    m_scoreLabel.setFont(m_context->m_assets->GetFont(FONT));
+    m_scoreLabel.setString("Score: " + std::to_string(m_score));
+    m_scoreLabel.setCharacterSize(24);
+    m_scoreLabel.setFillColor(sf::Color::Yellow);
+    m_scoreLabel.setOrigin(m_scoreLabel.getLocalBounds().width / 2, m_scoreLabel.getLocalBounds().height / 2);
+    m_scoreLabel.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 240.f);
 }
 
 void GamePlay::ProcessInput()
@@ -96,8 +105,6 @@ void GamePlay::Update(sf::Time deltaTime)
 
     if (m_elapsedTime.asSeconds() > 0.1)
     {
-        bool borderCollision = false;
-
         for (auto &border : m_border)
         {
             if (m_snake.isOn(border))
@@ -117,6 +124,9 @@ void GamePlay::Update(sf::Time deltaTime)
             y = std::clamp<int>(rand() % (m_context->m_window->getSize().y), 24, m_context->m_window->getSize().y - 2*24);
 
             m_food.setPosition(x, y);
+
+            m_score++;
+            m_scoreLabel.setString("Score: " + std::to_string(m_score));
         }
         else
         {
@@ -138,6 +148,7 @@ void GamePlay::Draw()
     }
     m_context->m_window->draw(m_food);
     m_context->m_window->draw(m_snake);
+    m_context->m_window->draw(m_scoreLabel);
 
     m_context->m_window->display();
 }

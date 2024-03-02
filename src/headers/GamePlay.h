@@ -3,6 +3,7 @@
 #include <memory>
 #include <array>
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 #include "State.h"
 #include "Game.h"
@@ -19,6 +20,9 @@ private:
     Snake m_snake;
     sf::Vector2f m_direction;
     sf::Time m_elapsedTime;
+
+    sf::Text m_scoreLabel;
+    int m_score;
 
 public:
     GamePlay(std::shared_ptr<Context>& context);
