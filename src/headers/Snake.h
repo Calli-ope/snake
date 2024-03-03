@@ -24,6 +24,5 @@ public:
     bool isOn(const sf::Sprite &other) const;
     void Grow(const sf::Vector2f &direction);
     bool isColliding() const;
-
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 };

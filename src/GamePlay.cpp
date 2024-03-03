@@ -157,13 +157,3 @@ void GamePlay::Draw()
 
     m_context->m_window->display();
 }
-
-void GamePlay::Pause()
-{
-
-}
-
-void GamePlay::Start()
-{
-
-}

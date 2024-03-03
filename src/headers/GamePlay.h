@@ -32,6 +32,4 @@ public:
     void ProcessInput() override;
     void Update(sf::Time deltaTime) override;
     void Draw() override;
-    void Pause() override;
-    void Start() override;
 };
