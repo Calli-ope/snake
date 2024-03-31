@@ -2,8 +2,8 @@
 #include "headers/GameOver.h"
 #include <SFML/Window/Event.hpp>
 
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
     : m_context(context),
@@ -35,12 +35,12 @@ void GamePlay::Init()
         border.setTexture(m_context->m_assets->GetTexture(BORDER));
     }
 
-    m_border[0].setTextureRect({0, 0, m_context->m_window->getSize().x, 24});
-    m_border[1].setTextureRect({0, 0, m_context->m_window->getSize().x, 24});
+    m_border[0].setTextureRect({0, 0, static_cast<int>(m_context->m_window->getSize().x), 24});
+    m_border[1].setTextureRect({0, 0, static_cast<int>(m_context->m_window->getSize().x), 24});
     m_border[1].setPosition(0, m_context->m_window->getSize().y - 24);
 
-    m_border[2].setTextureRect({0, 0, 24, m_context->m_window->getSize().y});
-    m_border[3].setTextureRect({0, 0, 24, m_context->m_window->getSize().y});
+    m_border[2].setTextureRect({0, 0, 24, static_cast<int>(m_context->m_window->getSize().y)});
+    m_border[3].setTextureRect({0, 0, 24, static_cast<int>(m_context->m_window->getSize().y)});
     m_border[3].setPosition(m_context->m_window->getSize().x - 24, 0);
 
     //display food
