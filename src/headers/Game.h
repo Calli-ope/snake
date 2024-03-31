@@ -33,7 +33,7 @@ class Game
 {
 private:
     std::shared_ptr<Context> h_context;
-    const sf::Time h_timePerFrame = sf::seconds(1.f / 60.f);
+    const sf::Time h_timePerFrame = sf::seconds(1.f / 144.f);
 
 public:
     Game();

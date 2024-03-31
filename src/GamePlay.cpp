@@ -2,7 +2,6 @@
 #include "headers/GameOver.h"
 #include <SFML/Window/Event.hpp>
 
-#include <cstdlib>
 #include <ctime>
 
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
