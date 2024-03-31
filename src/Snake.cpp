@@ -13,6 +13,7 @@ Snake::~Snake()
 
 void Snake::Init(const sf::Texture &texture)
 {
+    //initialize the snake with 4 segments
     float x = 24.f;
     for (auto &segment : h_snake)
     {
@@ -24,6 +25,7 @@ void Snake::Init(const sf::Texture &texture)
 
 void Snake::Move(const sf::Vector2f &direction)
 {
+    //move the snake by adding new segment to the head and removing the tail
     h_tail->setPosition(h_head->getPosition() + direction);
     h_head = h_tail;
     h_tail++;
@@ -36,11 +38,13 @@ void Snake::Move(const sf::Vector2f &direction)
 
 bool Snake::isOn(const sf::Sprite &other) const
 {
+    //check if the head is colliding with other sprite
     return other.getGlobalBounds().intersects(h_head->getGlobalBounds());
 }
 
 void Snake::Grow(const sf::Vector2f &direction)
 {
+    //add new segment to the snake
     sf::Sprite newSegment;
     newSegment.setTexture(*(h_snake.begin()->getTexture()));
     newSegment.setPosition(h_head->getPosition() + direction);
@@ -51,6 +55,7 @@ bool Snake::isColliding() const
 {
     bool isColliding = false;
 
+    //check if the head is colliding with any segment of the snake
     for (auto segment = h_snake.begin(); segment != h_snake.end(); segment++)
     {
         if (h_head != segment)
