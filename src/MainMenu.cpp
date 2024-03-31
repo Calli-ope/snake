@@ -23,7 +23,7 @@ void MainMenu::Init()
     h_gameTitle.setFont(h_context->h_assets->GetFont(FONT));
     h_gameTitle.setString("Snake");
     h_gameTitle.setOrigin(h_gameTitle.getLocalBounds().width / 2, h_gameTitle.getLocalBounds().height / 2);
-    h_gameTitle.setPosition(h_context->h_window->getSize().x / 2, h_context->h_window->getSize().y / 2 - 250.f);
+    h_gameTitle.setPosition(h_context->h_window->getSize().x / 2 - 25.f, h_context->h_window->getSize().y / 2 - 250.f);
     h_gameTitle.setCharacterSize(50);
 
     //play button

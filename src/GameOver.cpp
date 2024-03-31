@@ -22,7 +22,7 @@ void GameOver::Init()
     h_gameOver.setFont(h_context->h_assets->GetFont(FONT));
     h_gameOver.setString("Game Over");
     h_gameOver.setOrigin(h_gameOver.getLocalBounds().width / 2, h_gameOver.getLocalBounds().height / 2);
-    h_gameOver.setPosition(h_context->h_window->getSize().x / 2, h_context->h_window->getSize().y / 2 - 250.f);
+    h_gameOver.setPosition(h_context->h_window->getSize().x / 2 - 45.f, h_context->h_window->getSize().y / 2 - 250.f);
     h_gameOver.setCharacterSize(50);
 
     //play button
