@@ -12,17 +12,17 @@
 class GamePlay : public Engine::State
 {
 private:
-    std::shared_ptr<Context> m_context;
-    sf::Sprite m_background;
-    sf::Sprite m_food;
-    std::array<sf::Sprite, 4> m_border;
+    std::shared_ptr<Context> h_context;
+    sf::Sprite h_background;
+    sf::Sprite h_food;
+    std::array<sf::Sprite, 4> h_border;
 
-    Snake m_snake;
-    sf::Vector2f m_direction;
-    sf::Time m_elapsedTime;
+    Snake h_snake;
+    sf::Vector2f h_direction;
+    sf::Time h_elapsedTime;
 
-    sf::Text m_scoreLabel;
-    int m_score;
+    sf::Text h_scoreLabel;
+    int h_score;
 
 public:
     GamePlay(std::shared_ptr<Context>& context);

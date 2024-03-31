@@ -1,9 +1,10 @@
 #include "headers/Snake.h"
 
-Snake::Snake() : m_snake(std::list<sf::Sprite>(4))
+Snake::Snake() : h_snake(std::list<sf::Sprite>(4))
 {
-    m_head = --m_snake.end();
-    m_tail = m_snake.begin();
+    //set head to end of list and tail to beginning
+    h_head = --h_snake.end();
+    h_tail = h_snake.begin();
 }
 
 Snake::~Snake()
@@ -13,7 +14,7 @@ Snake::~Snake()
 void Snake::Init(const sf::Texture &texture)
 {
     float x = 24.f;
-    for (auto &segment : m_snake)
+    for (auto &segment : h_snake)
     {
         segment.setTexture(texture);
         segment.setPosition(x, 24.f);
@@ -23,36 +24,36 @@ void Snake::Init(const sf::Texture &texture)
 
 void Snake::Move(const sf::Vector2f &direction)
 {
-    m_tail->setPosition(m_head->getPosition() + direction);
-    m_head = m_tail;
-    m_tail++;
+    h_tail->setPosition(h_head->getPosition() + direction);
+    h_head = h_tail;
+    h_tail++;
 
-    if (m_tail == m_snake.end())
+    if (h_tail == h_snake.end())
     {
-        m_tail = m_snake.begin();
+        h_tail = h_snake.begin();
     }
 }
 
 bool Snake::isOn(const sf::Sprite &other) const
 {
-    return other.getGlobalBounds().intersects(m_head->getGlobalBounds());
+    return other.getGlobalBounds().intersects(h_head->getGlobalBounds());
 }
 
 void Snake::Grow(const sf::Vector2f &direction)
 {
     sf::Sprite newSegment;
-    newSegment.setTexture(*(m_snake.begin()->getTexture()));
-    newSegment.setPosition(m_head->getPosition() + direction);
-    m_head = m_snake.insert(m_head++, newSegment);
+    newSegment.setTexture(*(h_snake.begin()->getTexture()));
+    newSegment.setPosition(h_head->getPosition() + direction);
+    h_head = h_snake.insert(h_head++, newSegment);
 }
 
 bool Snake::isColliding() const
 {
     bool isColliding = false;
 
-    for (auto segment = m_snake.begin(); segment != m_snake.end(); segment++)
+    for (auto segment = h_snake.begin(); segment != h_snake.end(); segment++)
     {
-        if (m_head != segment)
+        if (h_head != segment)
         {
             isColliding = isOn(*segment);
             if (isColliding)
@@ -64,10 +65,9 @@ bool Snake::isColliding() const
     return isColliding;
 }
 
-
 void Snake::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    for (auto &segment : m_snake)
+    for (auto &segment : h_snake)
     {
         target.draw(segment);
     }

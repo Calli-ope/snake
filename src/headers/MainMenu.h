@@ -9,15 +9,15 @@
 class MainMenu : public Engine::State
 {
 private:
-    std::shared_ptr<Context> m_context;
-    sf::Text m_gameTitle;
-    sf::Text m_play;
-    sf::Text m_exit;
+    std::shared_ptr<Context> h_context;
+    sf::Text h_gameTitle;
+    sf::Text h_play;
+    sf::Text h_exit;
 
-    bool m_playSelected;
-    bool m_playPressed;
-    bool m_exitSelected;
-    bool m_exitPressed;
+    bool h_playSelected;
+    bool h_playPressed;
+    bool h_exitSelected;
+    bool h_exitPressed;
 
 public:
     MainMenu(std::shared_ptr<Context>& context);

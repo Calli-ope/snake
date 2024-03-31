@@ -1,12 +1,10 @@
-#include <SFML/Graphics/CircleShape.hpp>
-
 #include "headers/Game.h"
 #include "headers/MainMenu.h"
 
-Game::Game() : m_context(std::make_shared<Context>())
+Game::Game() : h_context(std::make_shared<Context>())
 {
-    m_context->m_window->create(sf::VideoMode(960,528), "Snake", sf::Style::Close);
-    m_context->m_states->Add(std::make_unique<MainMenu>(m_context));
+    h_context->h_window->create(sf::VideoMode(960, 528), "Snake", sf::Style::Close);
+    h_context->h_states->Add(std::make_unique<MainMenu>(h_context));
 }
 
 Game::~Game()
@@ -15,24 +13,21 @@ Game::~Game()
 
 void Game::Run()
 {
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-    while (m_context->m_window->isOpen())
+    while (h_context->h_window->isOpen())
     {
         timeSinceLastUpdate += clock.restart();
 
-        while (timeSinceLastUpdate > m_timePerFrame)
+        while (timeSinceLastUpdate > h_timePerFrame)
         {
-            timeSinceLastUpdate -= m_timePerFrame;
+            timeSinceLastUpdate -= h_timePerFrame;
 
-            m_context->m_states->ProcessStateChanges();
-            m_context->m_states->GetCurrent()->ProcessInput();
-            m_context->m_states->GetCurrent()->Update(m_timePerFrame);
-            m_context->m_states->GetCurrent()->Draw();
+            h_context->h_states->ProcessStateChanges();
+            h_context->h_states->GetCurrent()->ProcessInput();
+            h_context->h_states->GetCurrent()->Update(h_timePerFrame);
+            h_context->h_states->GetCurrent()->Draw();
         }
     }
 }

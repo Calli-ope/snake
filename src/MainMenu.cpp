@@ -3,11 +3,11 @@
 #include <SFML/Window/Event.hpp>
 
 MainMenu::MainMenu(std::shared_ptr<Context> &context)
-    : m_context(context),
-      m_playSelected(true),
-      m_playPressed(false),
-      m_exitSelected(false),
-      m_exitPressed(false)
+    : h_context(context),
+      h_playSelected(true),
+      h_playPressed(false),
+      h_exitSelected(false),
+      h_exitPressed(false)
 {
 }
 
@@ -17,36 +17,36 @@ MainMenu::~MainMenu()
 
 void MainMenu::Init()
 {
-    m_context->m_assets->AddFont(FONT, "assets/Baloo2.ttf");
+    h_context->h_assets->AddFont(FONT, "assets/Baloo2.ttf");
 
     //game title
-    m_gameTitle.setFont(m_context->m_assets->GetFont(FONT));
-    m_gameTitle.setString("Snake");
-    m_gameTitle.setOrigin(m_gameTitle.getLocalBounds().width / 2, m_gameTitle.getLocalBounds().height / 2);
-    m_gameTitle.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 250.f);
-    m_gameTitle.setCharacterSize(50);
+    h_gameTitle.setFont(h_context->h_assets->GetFont(FONT));
+    h_gameTitle.setString("Snake");
+    h_gameTitle.setOrigin(h_gameTitle.getLocalBounds().width / 2, h_gameTitle.getLocalBounds().height / 2);
+    h_gameTitle.setPosition(h_context->h_window->getSize().x / 2, h_context->h_window->getSize().y / 2 - 250.f);
+    h_gameTitle.setCharacterSize(50);
 
-    //play
-    m_play.setFont(m_context->m_assets->GetFont(FONT));
-    m_play.setString("Play");
-    m_play.setOrigin(m_play.getLocalBounds().width / 2, m_play.getLocalBounds().height / 2);
-    m_play.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 - 40.f);
+    //play button
+    h_play.setFont(h_context->h_assets->GetFont(FONT));
+    h_play.setString("Play");
+    h_play.setOrigin(h_play.getLocalBounds().width / 2, h_play.getLocalBounds().height / 2);
+    h_play.setPosition(h_context->h_window->getSize().x / 2, h_context->h_window->getSize().y / 2 - 40.f);
 
-    //exit
-    m_exit.setFont(m_context->m_assets->GetFont(FONT));
-    m_exit.setString("Exit");
-    m_exit.setOrigin(m_exit.getLocalBounds().width / 2, m_exit.getLocalBounds().height / 2);
-    m_exit.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 40.f);
+    //exit button
+    h_exit.setFont(h_context->h_assets->GetFont(FONT));
+    h_exit.setString("Exit");
+    h_exit.setOrigin(h_exit.getLocalBounds().width / 2, h_exit.getLocalBounds().height / 2);
+    h_exit.setPosition(h_context->h_window->getSize().x / 2, h_context->h_window->getSize().y / 2 + 40.f);
 }
 
 void MainMenu::ProcessInput()
 {
     sf::Event event;
-    while (m_context->m_window->pollEvent(event))
+    while (h_context->h_window->pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
         {
-            m_context->m_window->close();
+            h_context->h_window->close();
         }
         else if (event.type == sf::Event::KeyPressed)
         {
@@ -54,33 +54,33 @@ void MainMenu::ProcessInput()
             {
                 case sf::Keyboard::Up:
                 {
-                    if (!m_playSelected)
+                    if (!h_playSelected)
                     {
-                        m_playSelected = true;
-                        m_exitSelected = false;
+                        h_playSelected = true;
+                        h_exitSelected = false;
                     }
                     break;
                 }
                 case sf::Keyboard::Down:
                 {
-                    if (!m_exitSelected)
+                    if (!h_exitSelected)
                     {
-                        m_playSelected = false;
-                        m_exitSelected = true;
+                        h_playSelected = false;
+                        h_exitSelected = true;
                     }
                     break;
                 }
                 case sf::Keyboard::Return:
                 {
-                    m_exitPressed = false;
-                    m_playPressed = false;
-                    if (m_playSelected)
+                    h_exitPressed = false;
+                    h_playPressed = false;
+                    if (h_playSelected)
                     {
-                        m_playPressed = true;
+                        h_playPressed = true;
                     }
                     else
                     {
-                        m_exitPressed = true;
+                        h_exitPressed = true;
                     }
                     break;
                 }
@@ -95,33 +95,33 @@ void MainMenu::ProcessInput()
 
 void MainMenu::Update(sf::Time deltaTime)
 {
-    if (m_playSelected)
+    if (h_playSelected)
     {
-        m_play.setFillColor(sf::Color::Green);
-        m_exit.setFillColor(sf::Color::White);
+        h_play.setFillColor(sf::Color::Green);
+        h_exit.setFillColor(sf::Color::White);
     }
     else
     {
-        m_exit.setFillColor(sf::Color::Red);
-        m_play.setFillColor(sf::Color::White);
+        h_exit.setFillColor(sf::Color::Red);
+        h_play.setFillColor(sf::Color::White);
     }
 
-    if (m_playPressed)
+    if (h_playPressed)
     {
-        m_context->m_states->Add(std::make_unique<GamePlay>(m_context), true);
+        h_context->h_states->Add(std::make_unique<GamePlay>(h_context), true);
     }
-    else if (m_exitPressed)
+    else if (h_exitPressed)
     {
-        m_context->m_window->close();
+        h_context->h_window->close();
     }
 
 }
 
 void MainMenu::Draw()
 {
-    m_context->m_window->clear(sf::Color::Black);
-    m_context->m_window->draw(m_gameTitle);
-    m_context->m_window->draw(m_play);
-    m_context->m_window->draw(m_exit);
-    m_context->m_window->display();
+    h_context->h_window->clear(sf::Color::Black);
+    h_context->h_window->draw(h_gameTitle);
+    h_context->h_window->draw(h_play);
+    h_context->h_window->draw(h_exit);
+    h_context->h_window->display();
 }

@@ -9,15 +9,15 @@
 class GameOver : public Engine::State
 {
 private:
-    std::shared_ptr<Context> m_context;
-    sf::Text m_gameOver;
-    sf::Text m_retry;
-    sf::Text m_exit;
+    std::shared_ptr<Context> h_context;
+    sf::Text h_gameOver;
+    sf::Text h_retry;
+    sf::Text h_exit;
 
-    bool m_retrySelected;
-    bool m_retryPressed;
-    bool m_exitSelected;
-    bool m_exitPressed;
+    bool h_retrySelected;
+    bool h_retryPressed;
+    bool h_exitSelected;
+    bool h_exitPressed;
 
 public:
     GameOver(std::shared_ptr<Context>& context);

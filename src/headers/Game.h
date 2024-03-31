@@ -17,23 +17,23 @@ enum AssetID
 
 struct Context
 {
-    std::unique_ptr<Engine::AssetManager> m_assets;
-    std::unique_ptr<Engine::StateController> m_states;
-    std::unique_ptr<sf::RenderWindow> m_window;
+    std::unique_ptr<Engine::AssetManager> h_assets;
+    std::unique_ptr<Engine::StateController> h_states;
+    std::unique_ptr<sf::RenderWindow> h_window;
 
     Context()
     {
-        m_assets = std::make_unique<Engine::AssetManager>();
-        m_states = std::make_unique<Engine::StateController>();
-        m_window = std::make_unique<sf::RenderWindow>();
+        h_assets = std::make_unique<Engine::AssetManager>();
+        h_states = std::make_unique<Engine::StateController>();
+        h_window = std::make_unique<sf::RenderWindow>();
     }
 };
 
 class Game
 {
 private:
-    std::shared_ptr<Context> m_context;
-    const sf::Time m_timePerFrame = sf::seconds(1.f / 60.f);
+    std::shared_ptr<Context> h_context;
+    const sf::Time h_timePerFrame = sf::seconds(1.f / 60.f);
 
 public:
     Game();
