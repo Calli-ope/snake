@@ -6,11 +6,11 @@ The player controls a snake that grows longer and longer as it consumes bananas.
 The goal is to achieve the highest score without colliding with the border of the screen or the snake’s own tail.
 
 ## Features
-- Responsive Controls: Use arrow keys to navigate the snake.
-- Score Tracking: Keep track of your score as you play.
+- Responsive controls: Use arrow keys to navigate the snake.
+- Score tracking: Keep track of your score as you play.
 
 ## How to Play
-1. Run the game executable.
+1. Navigate to the game executable located in `cmake-build-debug/bin` and run it.
 2. Select `Play` to start the game.
 3. Control the snake using arrow keys.
 4. Collect bananas to grow the snake.
@@ -29,4 +29,4 @@ The goal is to achieve the highest score without colliding with the border of th
 - C++
 - SFML
   - **S**imple and **F**ast **M**ultimedia **L**ibrary
-- further standard libraries
+- other default headers
