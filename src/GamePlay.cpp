@@ -107,17 +107,17 @@ void GamePlay::Update(sf::Time deltaTime)
     {
         for (auto &border : h_border)
         {
+            //end the game, when the snake is colliding with the border
             if (h_snake.isOn(border))
             {
-                //end the game, when the snake is colliding with the border
                 h_context->h_states->Add(std::make_unique<GameOver>(h_context), true);
                 break;
             }
         }
 
+        //grow the snake, when the snake is on food
         if (h_snake.isOn(h_food))
         {
-            //grow the snake, when the snake is on food
             h_snake.Grow(h_direction);
 
             //randomize new food position
@@ -133,9 +133,9 @@ void GamePlay::Update(sf::Time deltaTime)
             h_snake.Move(h_direction);
         }
 
+        //end the game, when the snake is colliding with itself
         if (h_snake.isColliding())
         {
-            //end the game, when the snake is colliding with itself
             h_context->h_states->Add(std::make_unique<GameOver>(h_context), true);
         }
 

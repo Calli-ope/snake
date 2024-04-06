@@ -17,6 +17,7 @@ void Engine::StateController::Add(std::unique_ptr<State> toAdd, bool replace)
 
 void Engine::StateController::ProcessStateChanges()
 {
+    //remove the current state
     if (h_remove && !h_stateStack.empty())
     {
         h_stateStack.pop();
@@ -26,6 +27,7 @@ void Engine::StateController::ProcessStateChanges()
         }
         h_remove = false;
     }
+    //add the new state
     if (h_add)
     {
         if (h_replace && !h_stateStack.empty())

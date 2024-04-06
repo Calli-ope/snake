@@ -10,6 +10,7 @@ Engine::AssetManager::~AssetManager()
 
 void Engine::AssetManager::AddTexture(int id, const std::string& filePath, bool needRepeated)
 {
+    //create a new texture and load it from file
     auto texture = std::make_unique<sf::Texture>();
 
     if (texture->loadFromFile(filePath))
@@ -21,6 +22,7 @@ void Engine::AssetManager::AddTexture(int id, const std::string& filePath, bool 
 
 void Engine::AssetManager::AddFont(int id, const std::string& filePath)
 {
+    //create a new font and load it from file
     auto font = std::make_unique<sf::Font>();
 
     if (font->loadFromFile(filePath))
