@@ -6,23 +6,24 @@ The player controls a snake that grows longer and longer as it consumes bananas.
 The goal is to achieve the highest score without colliding with the border of the screen or the snake’s own tail.
 
 ## Features
-- Responsive controls: Use arrow keys to navigate the snake.
+- Responsive controls: Use WASD keys to navigate the snake.
 - Score tracking: Keep track of your score as you play.
+- Build for Windows included
 
 ## How to Play
 1. Navigate to the game executable located in `cmake-build-debug/bin` and run it.
 2. Select `Play` to start the game.
-3. Control the snake using arrow keys.
+3. Control the snake using WASD keys.
 4. Collect bananas to grow the snake.
 5. Avoid collisions with borders and your own tail.
 6. Restart the game to play again, if you hit an obstacle.
 7. Have fun!
 
 ## Controls
-- `Up Arrow`: Move the snake up / select upper button.
-- `Down Arrow`: Move the snake down / select lower button.
-- `Left Arrow`: Move the snake left.
-- `Right Arrow`: Move the snake right.
+- `W`: Move the snake up / select upper button.
+- `S`: Move the snake down / select lower button.
+- `A`: Move the snake left.
+- `D`: Move the snake right.
 - `Enter`: Select `Play`, `Retry` or `Exit` options.
 
 ## Technologies

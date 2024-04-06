@@ -51,7 +51,7 @@ void GameOver::ProcessInput()
         {
             switch (event.key.code)
             {
-                case sf::Keyboard::Up:
+                case sf::Keyboard::W:
                 {
                     if (!h_retrySelected)
                     {
@@ -60,7 +60,7 @@ void GameOver::ProcessInput()
                     }
                     break;
                 }
-                case sf::Keyboard::Down:
+                case sf::Keyboard::S:
                 {
                     if (!h_exitSelected)
                     {

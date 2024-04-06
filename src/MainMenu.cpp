@@ -52,7 +52,7 @@ void MainMenu::ProcessInput()
         {
             switch (event.key.code)
             {
-                case sf::Keyboard::Up:
+                case sf::Keyboard::W:
                 {
                     if (!h_playSelected)
                     {
@@ -61,7 +61,7 @@ void MainMenu::ProcessInput()
                     }
                     break;
                 }
-                case sf::Keyboard::Down:
+                case sf::Keyboard::S:
                 {
                     if (!h_exitSelected)
                     {

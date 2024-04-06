@@ -73,16 +73,16 @@ void GamePlay::ProcessInput()
             sf::Vector2f newDirection = h_direction;
             switch (event.key.code)
             {
-            case sf::Keyboard::Up:
+            case sf::Keyboard::W:
                 newDirection = {0.f, -24.f};
                 break;
-            case sf::Keyboard::Down:
+            case sf::Keyboard::S:
                 newDirection = {0.f, 24.f};
                 break;
-            case sf::Keyboard::Left:
+            case sf::Keyboard::A:
                 newDirection = {-24.f, 0.f};
                 break;
-            case sf::Keyboard::Right:
+            case sf::Keyboard::D:
                 newDirection = {24.f, 0.f};
                 break;
 
